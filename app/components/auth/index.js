@@ -11,6 +11,10 @@ class Login extends Component {
     loading: false
   }
 
+goNext = () => {
+  this.props.navigation.navigate('App')
+}
+
   render() {
     if(this.state.loading){
       return (
@@ -23,7 +27,7 @@ class Login extends Component {
         <ScrollView style={styles.container}>
         <View>
           <AuthLogo />
-          <AuthForm />
+          <AuthForm goNext={this.goNext} />
         </View>
 
         </ScrollView>
