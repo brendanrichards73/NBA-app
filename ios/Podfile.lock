@@ -81,8 +81,10 @@ PODS:
   - React-RCTWebSocket (0.60.0):
     - React-Core (= 0.60.0)
     - React-fishhook (= 0.60.0)
-  - RNGestureHandler (1.6.1):
+  - ReactNativeNavigation (6.4.0):
     - React
+    - React-RCTImage
+    - React-RCTText
   - RNReanimated (1.7.1):
     - React
   - yoga (0.60.0.React)
@@ -109,7 +111,7 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-RCTWebSocket (from `../node_modules/react-native/Libraries/WebSocket`)
-  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -160,8 +162,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   React-RCTWebSocket:
     :path: "../node_modules/react-native/Libraries/WebSocket"
-  RNGestureHandler:
-    :path: "../node_modules/react-native-gesture-handler"
+  ReactNativeNavigation:
+    :path: "../node_modules/react-native-navigation"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   yoga:
@@ -190,7 +192,7 @@ SPEC CHECKSUMS:
   React-RCTText: 685fca2e13b024271048e7e247ef24476f28a41e
   React-RCTVibration: 4ee1cf208ab17a50fafb1c16ffe28fe594a64e4f
   React-RCTWebSocket: fca087d583724aa0e5fef7d911f0f2a28d0f2736
-  RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
+  ReactNativeNavigation: 667586f6924fbd09512e2933fe70497db914b758
   RNReanimated: 4e102df74a9674fa943e05f97f3362b6e44d0b48
   yoga: 616fde658be980aa60a2158835170f3f9c2d04b4
 

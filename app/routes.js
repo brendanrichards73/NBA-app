@@ -1,32 +1,93 @@
 import React from 'react';
-import {Platform} from 'react-native';
+import { Navigation } from 'react-native-navigation'
 
-import {
-    createStackNavigator,
-    createSwitchNavigator,
-    createAppContainer,
-    createBottomTabNavigator,
-} from 'react-navigation';
+import Login from './components/auth';
+import News from './components/news';
+import Games from './components/games';
+import HomeScreen from './components/home';
 
-//screens
-import AuthComponent from './components/auth';
-import NewsComponent from './components/news';
-import GamesComponent from './components/games';
+Navigation.registerComponent('Home', () => HomeScreen);
+Navigation.registerComponent('Login', () => Login);
+Navigation.registerComponent('News', () => News);
+Navigation.registerComponent('Games', () => Games);
 
-const AppStack = createBottomTabNavigator({
-    News:NewsComponent,
-    Games:GamesComponent
+
+export const goToLogin = () => Navigation.setRoot({
+  root: {
+    bottomTabs: {
+      id: 'BottomTabsId',
+      children: [
+        {
+          component: {
+            id: Login,
+            name: 'Login',
+            options: {
+              bottomTab: {
+                fontSize: 12,
+                text: 'Sign In',
+                icon: require('../app/images/signIn.png')
+              }
+            }
+          },
+        },
+        {
+          component: {
+            id: News,
+            name: 'News',
+            options: {
+              bottomTab: {
+                text: 'News',
+                fontSize: 12,
+                icon: require('../app/images/signUp.png')
+              }
+            }
+          },
+        },
+      ],
+    }
+  }
 });
 
-const AuthStack = createStackNavigator({
-    SignIn:AuthComponent
-});
 
-export const RootNavigator = () => {
-    return createAppContainer(createSwitchNavigator({
-        App:AppStack,
-        Auth:AuthStack
-    },{
-        initialRouteName:'Auth'
-    }))
-}
+export const goToTabs = () => {  
+    Navigation.setRoot({
+        root: {
+        bottomTabs: {
+            children: [{
+            stack: {
+                children: [{
+                component: {
+                    id: Games,
+                    name: 'Games',
+                    passProps: {
+                    text: 'Games Screen',
+                    icon: require('../app/images/signUp.png')
+                    }
+                }
+                }],
+                options: {
+                bottomTab: {
+                    text: 'Tab 1',
+                }
+                }
+            }
+            },
+            {
+            component: {
+                id: News,
+                name: 'News',
+                passProps: {
+                text: 'News Screen'
+                },
+                options: {
+                bottomTab: {
+                    text: 'Tab 2',
+                    icon: require('../app/images/signIn.png')
+                    
+                }
+                }
+            }
+            }]
+        }
+    }
+})};
