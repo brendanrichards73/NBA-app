@@ -94,6 +94,40 @@ state = {
         })
     }
 
+        submitUser = () => {
+            let isFormValid = true;
+            let formToSubmit = {};
+            const formCopy = this.state.form;
+
+            for(let key in formCopy){
+                    if(this.state.type === 'Login'){
+                        if(key !== 'confirmPassword'){
+                            isFormValid = isFormValid && formCopy[key].valid;
+                            formToSubmit[key] = formCopy[key].value;
+                        }
+
+                    } else{
+                            isFormValid = isFormValid && formCopy[key].valid;
+                            formToSubmit[key] = formCopy[key].value;
+                    }
+            }
+
+            if(isFormValid){
+                if(this.state.type === 'Login'){
+                    console.log(formToSubmit)
+                } else {
+                    console.log(formToSubmit)
+                }
+
+            } else{
+                this.setState({
+                    hasErrors: true
+                })
+            }
+        }
+
+
+
     render() {
         return (
             <View>
