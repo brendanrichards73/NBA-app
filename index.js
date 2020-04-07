@@ -1,12 +1,17 @@
 import React from 'react';
+import { AppRegistry } from 'react-native';
 import { Navigation } from "react-native-navigation";
 import App from './app/index';
-// import {name as appName} from './app.json';
+import {name as appName} from './app.json';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import promiseMiddleware from 'redux-promise';
-import { registerScreens } from './app/screens';
+
 import reducers from './app/store/reducers';
+
+import { registerScreens } from './app/screens';
+import Login from './app/components/auth';
+
 
 registerScreens();
 
@@ -17,31 +22,19 @@ const createStoreWithMiddleware = createStore(reducers, composeEnhancers(
 ))
 
 
-const appRedux = () => {
-  return (
+const appRedux = () => (
         <Provider store={createStoreWithMiddleware}>
             <App />
         </Provider>
-  )}
+  )
 
-Navigation.registerComponent('HomeScreen', () => appRedux);
+
+Navigation.registerComponentWithRedux('Login', () => Login, Provider, createStoreWithMiddleware);
+Navigation.registerComponentWithRedux('Games', () => require('./app/components/games/index').default);
+Navigation.registerComponentWithRedux('News', () => require('./app/components/news/index').default);
 Navigation.events().registerAppLaunchedListener(() => {
         Navigation.setRoot({
           root: {
-            // stack: {
-            //   children: [
-            //     {
-            //       stack: {
-            //         children: [
-            //           {
-            //             component: {
-            //               name: 'Home'
-            //             }
-            //           },
-            //         ]
-            //       }
-            //     },
-            //     {
                   bottomTabs: {
                     id: 'BOTTOM_TABS_LAYOUT',
                     children: [

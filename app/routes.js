@@ -4,9 +4,7 @@ import { Navigation } from 'react-native-navigation'
 import Login from './components/auth';
 import News from './components/news';
 import Games from './components/games';
-import HomeScreen from './components/home';
 
-Navigation.registerComponent('Home', () => HomeScreen);
 Navigation.registerComponent('Login', () => Login);
 Navigation.registerComponent('News', () => News);
 Navigation.registerComponent('Games', () => Games);
